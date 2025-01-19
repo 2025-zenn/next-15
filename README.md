@@ -13,4 +13,11 @@
 # 概要
 
 - next15
+
+# 環境構築
+
+```bash
+docker-compose up -d
+```
+
 - http://localhost:3000

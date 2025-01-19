@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  front:
+    build:
+      context: ./next
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    tty: true
+    working_dir: /app/next
+    command: npm run dev
