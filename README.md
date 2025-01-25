@@ -17,6 +17,12 @@
 # 環境構築
 
 ```bash
+git clone https://github.com/2025-zenn/next-15.git
+cd next-15
+cp next/.env.sample next/.env.local
+```
+
+```bash
 docker-compose up -d
 ```
 
