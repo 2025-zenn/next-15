@@ -26,4 +26,16 @@ cp next/.env.sample next/.env.local
 docker-compose up -d
 ```
 
+## アプリ
+
 - http://localhost:3000
+
+## API
+
+```bash
+docker-compose exec front bash
+```
+
+```bash
+curl http://localhost:3000/api/health
+```
