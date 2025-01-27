@@ -1,7 +1,8 @@
 "use client"
 
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+import FileUploader from "./_components/FileUploader";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,7 +110,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-96 max-w-[90%]">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">新規作成</h2>
+              <h2 className="text-xl font-bold">何を食べましたか？</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
@@ -125,9 +126,8 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            {/* モーダルの内容をここに追加 */}
             <div className="mt-4">
-              <p>モーダルの内容がここに表示されます。</p>
+              <FileUploader />
             </div>
           </div>
         </div>
