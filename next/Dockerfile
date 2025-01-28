@@ -38,11 +38,17 @@ COPY --from=builder /build/package.json ./package.json
 
 # NOTE: コンテナで使うツール
 ARG TOOL="curl bash"
+ARG BUILD_TOOL="tar python3"
 
 RUN apk upgrade && \
     apk add --no-cache \
-        ${TOOL}
-# RUN apk del ${TOOL}
+        ${TOOL} \
+        ${BUILD_TOOL} && \
+    curl -sSL https://sdk.cloud.google.com | bash && \
+    apk del ${BUILD_TOOL} && \
+    rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+
+ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 EXPOSE 3000
 

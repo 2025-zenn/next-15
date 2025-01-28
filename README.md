@@ -9,6 +9,7 @@
 | react | 19.0.0 |
 | tailwindcss | 3.4.17 |
 | typescript | 5.7.3 |
+| gcloud | 507.0.0 |
 
 # 概要
 
