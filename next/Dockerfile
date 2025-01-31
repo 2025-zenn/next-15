@@ -35,22 +35,29 @@ WORKDIR /app/next
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
+COPY --from=builder /build/public ./.next/standalone/
+COPY --from=builder /build/.next/static ./.next/standalone/.next/
 
 # NOTE: コンテナで使うツール
 ARG TOOL="curl bash python3"
 ARG BUILD_TOOL="tar"
 
 RUN apk upgrade && \
-    apk add --no-cache \
-        ${TOOL} \
-        ${BUILD_TOOL} && \
-    curl -sSL https://sdk.cloud.google.com | bash && \
-    apk del ${BUILD_TOOL} && \
-    rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+  apk add --no-cache \
+  ${TOOL} \
+  ${BUILD_TOOL} && \
+  # curl -sSL https://sdk.cloud.google.com | bash && \
+  apk del ${BUILD_TOOL} && \
+  rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
-ENV PATH $PATH:/root/google-cloud-sdk/bin
+# ENV PATH $PATH:/root/google-cloud-sdk/bin
+
+ENV PORT 3000
+# set hostname to localhost
+ENV HOSTNAME "0.0.0.0"
 
 EXPOSE 3000
 
 # コマンド
+CMD ["node", ".next/standalone/server.js"]
 # CMD ["npm", "run", "dev", "--", "-p", "3000"]
