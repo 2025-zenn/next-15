@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   front:
     build:
@@ -8,8 +6,16 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
+      - type: volume
+        source: node_modules
+        target: /app/next/node_modules
+        volume:
+          nocopy: false
     environment:
       - NODE_ENV=development
     tty: true
     working_dir: /app/next
     command: npm run dev
+
+volumes:
+  node_modules:
