@@ -46,11 +46,11 @@ RUN apk upgrade && \
   apk add --no-cache \
   ${TOOL} \
   ${BUILD_TOOL} && \
-  # curl -sSL https://sdk.cloud.google.com | bash && \
+  curl -sSL https://sdk.cloud.google.com | bash && \
   apk del ${BUILD_TOOL} && \
   rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
-# ENV PATH $PATH:/root/google-cloud-sdk/bin
+ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 ENV PORT 3000
 # set hostname to localhost
