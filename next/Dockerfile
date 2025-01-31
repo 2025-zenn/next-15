@@ -37,8 +37,8 @@ COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
 
 # NOTE: コンテナで使うツール
-ARG TOOL="curl bash"
-ARG BUILD_TOOL="tar python3"
+ARG TOOL="curl bash python3"
+ARG BUILD_TOOL="tar"
 
 RUN apk upgrade && \
     apk add --no-cache \

@@ -11,6 +11,9 @@ services:
         target: /app/next/node_modules
         volume:
           nocopy: false
+      - type: volume
+        source: gcloudconfig
+        target: /root/.config/gcloud/
     environment:
       - NODE_ENV=development
     tty: true
@@ -18,4 +21,5 @@ services:
     command: npm run dev
 
 volumes:
+  gcloudconfig:
   node_modules:
