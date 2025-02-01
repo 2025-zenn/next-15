@@ -35,9 +35,8 @@ WORKDIR /app/next
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
-COPY --from=builder /build/public ./public
-COPY --from=builder /build/.next/static ./.next/static
-COPY --from=builder /build/.next/standalone ./
+COPY --from=builder /build/public ./.next/standalone/
+COPY --from=builder /build/.next/static ./.next/standalone/.next/
 
 # NOTE: コンテナで使うツール
 ARG TOOL="curl bash python3"
@@ -56,12 +55,9 @@ ENV PATH $PATH:/root/google-cloud-sdk/bin
 ENV PORT 3000
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
-# ビルド時の引数を受け取る
-ARG ENV_FILE
-COPY $ENV_FILE .env.production
 
 EXPOSE 3000
 
 # コマンド
-CMD ["node", "server.js"]
+CMD ["node", ".next/standalone/server.js"]
 # CMD ["npm", "run", "dev", "--", "-p", "3000"]
