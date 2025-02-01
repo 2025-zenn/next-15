@@ -14,22 +14,30 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <div className="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <h2 className="text-lg font-semibold">一日の推奨カロリー</h2>
-              <p className="text-2xl font-bold text-green-600">{recommendedCalories} kcal</p>
+        <div className="w-full max-w-md">
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md space-y-6">
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <h2 className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">一日の推奨カロリー</h2>
+                <div className="flex items-baseline">
+                  <p className="text-3xl font-bold text-green-600">{recommendedCalories}</p>
+                  <span className="ml-1 text-sm text-gray-500">kcal</span>
+                </div>
+              </div>
+              <div>
+                <h2 className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-2">現在の摂取カロリー</h2>
+                <div className="flex items-baseline">
+                  <p className="text-3xl font-bold text-blue-600">{totalCalories}</p>
+                  <span className="ml-1 text-sm text-gray-500">kcal</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <h2 className="text-lg font-semibold">現在の摂取カロリー</h2>
-              <p className="text-2xl font-bold text-blue-600">{totalCalories} kcal</p>
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div 
+                className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+                style={{ width: `${Math.min((totalCalories / recommendedCalories) * 100, 100)}%` }}
+              ></div>
             </div>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div 
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: `${Math.min((totalCalories / recommendedCalories) * 100, 100)}%` }}
-            ></div>
           </div>
         </div>
       </main>
