@@ -40,3 +40,34 @@ docker-compose exec front bash
 ```bash
 curl http://localhost:3000/api/health
 ```
+
+# デプロイ
+
+- GCPの初期設定
+
+    ```bash
+    gcloud init
+    gcloud auth login --no-launch-browser
+    ```
+
+- クレデンシャルファイルの生成
+
+    ```bash
+    gcloud auth application-default login
+    ```
+
+- クレデンシャルファイルのパスを確認する
+
+    ```bash
+    # ログイン後のレスポンスに保存先のパスが表示される
+    ~~
+    Credentials saved to file: [/root/.config/...]
+    ```
+
+- .env.localの変数を修正
+
+    ```.env.local
+    GOOGLE_APPLICATION_CREDENTIALS={`gcloud auth application-default login`で生成されるキーファイルのパス}
+    NEXT_PUBLIC_GEMINI_API_KEY={GCPで作成したVertexAIのAPIキー}
+    NEXT_PUBLIC_PROJECT_ID={GCPのプロジェクトID}
+    ```

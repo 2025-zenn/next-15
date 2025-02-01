@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google-cloud/vertexai": "^1.9.3",
     "daisyui": "^4.12.23",
     "next": "15.1.5",
     "react": "^19.0.0",
