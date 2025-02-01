@@ -4,7 +4,7 @@ steps:
     args:
       - '-c'
       - >-
-        gcloud secrets versions access latest --secret=$_SECRET_MANAGER_NAME > .env.production
+        gcloud secrets versions access latest --secret=$$$_SECRET_MANAGER_NAME > .env.production
     id: 'fetch-secret'
   - name: gcr.io/cloud-builders/docker
     args:
@@ -19,6 +19,7 @@ steps:
       - '.'
       - '-f'
       - next/Dockerfile
+    secretEnv: [$_SECRET_MANAGER_NAME]
     id: Build
   - name: gcr.io/cloud-builders/docker
     args:
@@ -41,6 +42,11 @@ steps:
       - '--quiet'
     id: Deploy
     entrypoint: gcloud
+availableSecrets:
+  secretManager:
+  - >-
+    versionName: projects/$_PROJECT_NUMBER/secrets/$_SECRET_MANAGER_NAME/versions/1
+    env: $_SECRET_MANAGER_NAME
 images:
   - >-
     $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
