@@ -35,8 +35,9 @@ WORKDIR /app/next
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
-COPY --from=builder /build/public ./.next/standalone/
-COPY --from=builder /build/.next/static ./.next/standalone/.next/
+COPY --from=builder /build/public ./public
+COPY --from=builder /build/.next/static ./.next/static
+COPY --from=builder /build/.next/standalone ./
 
 # NOTE: コンテナで使うツール
 ARG TOOL="curl bash python3"
@@ -65,5 +66,5 @@ RUN if [ -n "$ENV_FILE" ]; then \
 EXPOSE 3000
 
 # コマンド
-CMD ["node", ".next/standalone/server.js"]
+CMD ["node", "server.js"]
 # CMD ["npm", "run", "dev", "--", "-p", "3000"]
