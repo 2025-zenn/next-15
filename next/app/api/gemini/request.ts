@@ -1,4 +1,4 @@
-const {VertexAI} = require('@google-cloud/vertexai');
+import { VertexAI, GenerateContentRequest } from '@google-cloud/vertexai';
 
 // 関数をエクスポートする
 export async function analyzeImageWithGemini(
@@ -58,10 +58,15 @@ export async function analyzeImageWithGemini(
           imagePart
         ]
       }],
-    };
+    } as GenerateContentRequest;
 
     const response = await generativeVisionModel.generateContent(request);
-    const resultText = response.response.candidates[0].content.parts[0].text;
+    const candidates = response.response?.candidates;
+    if (!candidates || candidates.length === 0) {
+      throw new Error('応答が空でした');
+    }
+
+    const resultText = candidates[0].content.parts[0].text;
 
     return {
       success: true,

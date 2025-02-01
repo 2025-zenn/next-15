@@ -16,8 +16,7 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     return NextResponse.json(
-      { status: 500, error: 'Image analysis failed' },
-      { status: 500 }
+      { status: 500, error: error },
     );
   }
 }

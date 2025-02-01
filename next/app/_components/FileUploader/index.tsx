@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+interface FoodItem {
+    name: string;
+    'min-calories': number;
+    'max-calories': number;
+}
+
+interface AnalysisResult {
+    foods: FoodItem[];
+    'min-total-calories': number;
+    'max-total-calories': number;
+}
+
 const FileUploader = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string | null>(null);
@@ -94,14 +106,22 @@ const FileUploader = () => {
                         <h3 className="font-semibold mb-2">解析結果</h3>
                         <div className="space-y-2">
                             {analysisResult && (() => {
-                                const result = JSON.parse(analysisResult);
+                                const result: AnalysisResult = JSON.parse(analysisResult);
                                 return (
                                     <>
                                         <div className="space-y-4">
+                                            <div className="border-b pb-3">
+                                                <p className="text-sm font-medium text-gray-700">
+                                                    総カロリー：
+                                                    <span className="text-blue-600">
+                                                        {result['min-total-calories']}~{result['max-total-calories']}kcal
+                                                    </span>
+                                                </p>
+                                            </div>
                                             <div>
                                                 <h4 className="text-sm font-medium text-gray-700 mb-2">検出された食品</h4>
                                                 <ul className="space-y-2">
-                                                    {result.foods.map((food: any, index: number) => (
+                                                    {result.foods.map((food: FoodItem, index: number) => (
                                                         <li key={index} className="bg-gray-50 p-3 rounded-md">
                                                             <span className="font-medium">{food.name}</span>
                                                             <span className="text-sm text-gray-600 ml-2">
@@ -110,14 +130,6 @@ const FileUploader = () => {
                                                         </li>
                                                     ))}
                                                 </ul>
-                                            </div>
-                                            <div className="border-t pt-3">
-                                                <p className="text-sm font-medium text-gray-700">
-                                                    総カロリー：
-                                                    <span className="text-blue-600">
-                                                        {result['min-total-calories']}~{result['max-total-calories']}kcal
-                                                    </span>
-                                                </p>
                                             </div>
                                         </div>
                                     </>
