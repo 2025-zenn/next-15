@@ -55,6 +55,12 @@ ENV PATH $PATH:/root/google-cloud-sdk/bin
 ENV PORT 3000
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
+# ビルド時の引数を受け取る
+ARG ENV_FILE
+# ENV_FILEが設定されている場合のみコピーを実行
+RUN if [ -n "$ENV_FILE" ]; then \
+      cp $ENV_FILE .env.production; \
+    fi
 
 EXPOSE 3000
 
