@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { notojp } from "@/fonts";
-import Navigation from "@/app/_components/Navigation"
+import { ClientLayout } from "./_components/ClientLayout";
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_TITLE,
@@ -15,15 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`
-          ${notojp.className}
-          antialiased
-          relative
-        `}
-      >
-        <Navigation />
-        {children}
+      <body className={`${notojp.className} antialiased relative`}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
