@@ -66,15 +66,13 @@ const FileUploader = () => {
                 }),
             });
             const data = await response.json();
-            setAnalysisResult(data.result);
             
-        } catch (error) {
-            console.error('アップロードエラー:', error);
-            setError(
-                error instanceof Error 
-                    ? error.message 
-                    : 'エラーが発生しました。もう一度お試しください。'
-            );
+            if (!response.ok) {
+                setError(data.error || '画像の解析中にエラーが発生しました。');
+                return;
+            }
+            
+            setAnalysisResult(data.result);
         } finally {
             setIsUploading(false);
         }

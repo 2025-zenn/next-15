@@ -9,14 +9,21 @@ export async function POST(request: Request) {
       base64Data: data.base64Data,
     }
     const analysis = await analyzeImageWithGemini(imageData);
+    if (!analysis.success) {
+      return NextResponse.json({
+        status: 500,
+        error: analysis.error?.message || '画像解析に失敗しました。'
+      }, { status: 500 });
+    }
 
     return NextResponse.json({
       status: 200,
       result: analysis.data
-    });
+    }, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { status: 500, error: error },
-    );
+    return NextResponse.json({
+      status: 500,
+      error: error
+    }, { status: 500 });
   }
 }
