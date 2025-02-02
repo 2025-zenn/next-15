@@ -35,8 +35,8 @@ WORKDIR /app/next
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
-COPY --from=builder /build/public ./.next/standalone/
-COPY --from=builder /build/.next/static ./.next/standalone/.next/
+COPY --from=builder /build/public ./public
+COPY --from=builder /build/.next/static ./.next/static
 
 # NOTE: コンテナで使うツール
 ARG TOOL="curl bash python3"
