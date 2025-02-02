@@ -35,6 +35,7 @@ WORKDIR /app/next
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
+COPY --from=builder /build/.next/standalone ./
 COPY --from=builder /build/public ./public
 COPY --from=builder /build/.next/static ./.next/static
 
@@ -72,5 +73,5 @@ ENV HOSTNAME "0.0.0.0"
 EXPOSE 3000
 
 # コマンド
-CMD ["node", ".next/standalone/server.js"]
+CMD ["node", "server.js"]
 # CMD ["npm", "run", "dev", "--", "-p", "3000"]
