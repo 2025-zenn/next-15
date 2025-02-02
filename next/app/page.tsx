@@ -11,8 +11,8 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex flex-col gap-8 mt-20 items-center sm:items-start px-4 sm:px-20 py-8">
-      <div className="w-full max-w-md space-y-8">
+    <main className="flex flex-col gap-8 mt-20 items-center px-4 sm:px-20 py-8">
+      <div className="w-full max-w-md space-y-8 mx-auto">
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md space-y-6">
           <div className="grid grid-cols-2 gap-8">
             <div>

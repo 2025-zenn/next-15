@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notojp.className} antialiased relative`}>
+      <body className={`${notojp.className} antialiased relative bg-green-50`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
