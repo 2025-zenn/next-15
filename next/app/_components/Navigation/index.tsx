@@ -7,7 +7,7 @@ const Navigation = () => {
                 <ul className='flex menu menu-horizontal p-0'>
                     <li>
                       <Link href="/" className="text-lg">
-                        {process.env.APP_TITLE}
+                        {process.env.NEXT_PUBLIC_APP_TITLE}
                       </Link>
                     </li>
                 </ul>

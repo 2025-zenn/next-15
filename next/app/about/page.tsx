@@ -5,7 +5,7 @@ export default function Home() {
         <div className="flex flex-col gap-6 max-w-2xl text-center sm:text-left">
           <h1 className="text-4xl font-bold">私たちについて</h1>
           <p className="text-lg">
-            {process.env.APP_TITLE}は、皆様の健康的な生活をサポートすることを使命としています。
+            {process.env.NEXT_PUBLIC_APP_TITLE}は、皆様の健康的な生活をサポートすることを使命としています。
             最新のAI技術を活用し、パーソナライズされた健康アドバイスを提供します。
           </p>
           <p className="text-lg">

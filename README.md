@@ -20,7 +20,7 @@
 ```bash
 git clone https://github.com/2025-zenn/next-15.git
 cd next-15
-cp next/.env.sample next/.env.local
+cp .env.sample .env
 ```
 
 ```bash
@@ -68,6 +68,6 @@ curl http://localhost:3000/api/health
 
     ```.env.local
     GOOGLE_APPLICATION_CREDENTIALS={`gcloud auth application-default login`で生成されるキーファイルのパス}
-    NEXT_PUBLIC_GEMINI_API_KEY={GCPで作成したVertexAIのAPIキー}
-    NEXT_PUBLIC_PROJECT_ID={GCPのプロジェクトID}
+    GEMINI_API_KEY={GCPで作成したVertexAIのAPIキー}
+    PROJECT_ID={GCPのプロジェクトID}
     ```

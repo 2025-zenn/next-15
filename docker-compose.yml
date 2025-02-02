@@ -2,6 +2,12 @@ services:
   front:
     build:
       context: ./next
+      args:
+        - _NEXT_PUBLIC_APP_TITLE=${NEXT_PUBLIC_APP_TITLE}
+        - _NEXT_PUBLIC_APP_DESCRIPTION=${NEXT_PUBLIC_APP_DESCRIPTION}
+        - _GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+        - _GEMINI_API_KEY=${GEMINI_API_KEY}
+        - _PROJECT_ID=${PROJECT_ID}
     ports:
       - "3000:3000"
     volumes:

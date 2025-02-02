@@ -21,7 +21,7 @@ export async function analyzeImageWithGemini(
     "min-total-calories": 470,
     "max-total-calories": 700
   }`,
-  projectId = process.env.NEXT_PUBLIC_PROJECT_ID,
+  projectId = process.env.PROJECT_ID,
   location = 'asia-northeast1',
   model = 'gemini-1.5-pro',
 ) {
