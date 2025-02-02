@@ -4,8 +4,8 @@ import { notojp } from "@/fonts";
 import { ClientLayout } from "./_components/ClientLayout";
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_TITLE,
-  description: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
+  title: process.env.NEXT_PUBLIC_APP_TITLE || 'アドバイス',
+  description: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'カロリー管理アプリ',
 };
 
 export default function RootLayout({
