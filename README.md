@@ -47,6 +47,9 @@ curl http://localhost:3000/api/health
 
     ```bash
     gcloud init
+    ```
+
+    ```bash
     gcloud auth login --no-launch-browser
     ```
 
@@ -64,10 +67,9 @@ curl http://localhost:3000/api/health
     Credentials saved to file: [/root/.config/...]
     ```
 
-- .env.localの変数を修正
+- .envの変数を修正
 
     ```.env.local
     GOOGLE_APPLICATION_CREDENTIALS={`gcloud auth application-default login`で生成されるキーファイルのパス}
-    GEMINI_API_KEY={GCPで作成したVertexAIのAPIキー}
     PROJECT_ID={GCPのプロジェクトID}
     ```

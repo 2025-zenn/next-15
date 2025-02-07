@@ -10,6 +10,10 @@ export function ClientLayout({
   children: React.ReactNode;
 }>) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
@@ -39,7 +43,7 @@ export function ClientLayout({
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">何を食べましたか？</h2>
               <button
-                onClick={() => setIsModalOpen(false)}
+                onClick={handleCloseModal}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               >
                 <svg
@@ -54,7 +58,7 @@ export function ClientLayout({
               </button>
             </div>
             <div className="mt-4 overflow-y-auto flex-1">
-              <FileUploader />
+              <FileUploader onClose={handleCloseModal} />
             </div>
           </div>
         </div>
