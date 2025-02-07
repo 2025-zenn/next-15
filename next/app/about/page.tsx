@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start p-5 bg-white/30 backdrop-blur-sm rounded-lg shadow-lg">
         <div className="flex flex-col gap-6 max-w-2xl text-center sm:text-left">
           <h1 className="text-4xl font-bold">私たちについて</h1>
           <p className="text-lg">
@@ -13,8 +13,8 @@ export default function Home() {
             最新のAI技術を用いた正確な情報提供を心がけています。
           </p>
           <div className="flex gap-4 justify-center sm:justify-start">
-            <button className="btn btn-primary">お問い合わせ</button>
-            <button className="btn btn-outline">サービス詳細</button>
+            {/* TODO: 投稿したハッカソンの記事に飛ばす */}
+            <a href="https://zenn.dev" target="_blank" rel="noopener noreferrer" className="btn btn-outline rounded-lg">サービス詳細</a>
           </div>
         </div>
       </main>
