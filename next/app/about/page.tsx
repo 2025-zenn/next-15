@@ -10,11 +10,10 @@ export default function Home() {
           </p>
           <p className="text-lg">
             私たちのチームは、AIエンジニアで構成されており、医療の専門家ではございません。
-            最新のAI技術を用いた正確な情報提供を心がけています。
+            ただし最新のAI技術を用いた正確な情報提供を心がけています。
           </p>
           <div className="flex gap-4 justify-center sm:justify-start">
-            {/* TODO: 投稿したハッカソンの記事に飛ばす */}
-            <a href="https://zenn.dev" target="_blank" rel="noopener noreferrer" className="btn btn-outline rounded-lg">サービス詳細</a>
+            <a href="https://zenn.dev/500ban/articles/5e31485eb775ee" target="_blank" rel="noopener noreferrer" className="btn btn-outline rounded-lg">サービス詳細</a>
           </div>
         </div>
       </main>
