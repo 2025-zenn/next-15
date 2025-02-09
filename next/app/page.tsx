@@ -4,8 +4,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./api/firestore/connectDB";
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [uploadedData, setUploadedData] = useState<any[]>([]);
-  const [totalCalories, setTotalCalories] = useState<string>("0");
+  const [totalCalories, setTotalCalories] = useState(0);
   const [mealData, setMealData] = useState([
     { time: "朝食", calories: 0, icon: "☀️" },
     { time: "昼食", calories: 0, icon: "🌤️" },
@@ -16,7 +17,9 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "uploadData"));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const data: any[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         querySnapshot.forEach((doc: any) => {
           data.push(doc.data());
         });
@@ -39,7 +42,9 @@ export default function Home() {
       setTotalCalories(maxTotalCalories); // 総カロリーを設定
 
       // 朝食のカロリーを設定
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setMealData((prevMealData: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return prevMealData.map((meal: any) => {
           if (meal.time === "朝食") {
             return { ...meal, calories: maxTotalCalories };
