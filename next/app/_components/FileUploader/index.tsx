@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/app/page";
+import { db } from "@/app/api/firestore/connectDB";
 
 interface FoodItem {
   name: string;
